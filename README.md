@@ -40,3 +40,11 @@ npm start
 npm run restore
 npm test
 ```
+## Security
+> To activate the security, set the API.secured value in api/config/default.json to **true** and get a token with the following command
+```bash
+curl --request POST \
+  --url https://vvf.eu.auth0.com/oauth/token \
+  --header 'content-type: application/json' \
+  --data '{"client_id":"0DJQkV8UKwnqhIaCGHAmNFdYt3qHuVKf","client_secret":"32pzwNzzbvMmD02TjRDGRcVvLwwV9Wcc0t4UdKzrY43hIz91XmPtbcCj3XtREjAe","audience":"http://foncia.victornitu.com","grant_type":"client_credentials"}'
+```

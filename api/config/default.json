@@ -1,7 +1,13 @@
 {
   "API": {
     "name": "Foncia API",
-    "port": 80
+    "port": 80,
+    "secured": false,
+    "auth0": {
+      "jwksUri": "https://vvf.eu.auth0.com/.well-known/jwks.json",
+      "audience": "http://foncia.victornitu.com",
+      "issuer": "https://vvf.eu.auth0.com/"
+    }
   },
   "Database": {
     "host": "db",

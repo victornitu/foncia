@@ -1,0 +1,10 @@
+{
+  "API": {
+    "name": "Foncia API",
+    "port": 80
+  },
+  "Database": {
+    "host": "db",
+    "name": "myFonciaBdd"
+  }
+}

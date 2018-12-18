@@ -48,3 +48,32 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"client_id":"0DJQkV8UKwnqhIaCGHAmNFdYt3qHuVKf","client_secret":"32pzwNzzbvMmD02TjRDGRcVvLwwV9Wcc0t4UdKzrY43hIz91XmPtbcCj3XtREjAe","audience":"http://foncia.victornitu.com","grant_type":"client_credentials"}'
 ```
+
+## List clients
+```bash
+curl localhost:8080/client
+curl localhost:8080/client?page=2&size=10
+...
+```
+
+## List lots
+```bash
+curl localhost:8080/lot
+curl localhost:8080/lot?page=2&size=10
+```
+
+## Create new client
+```bash
+curl --request POST \
+    --url localhost:8080/client \
+    --header 'content-type: application/json' \
+    --data '{"fullname":  "Victor Nitu", ... }'
+```
+
+## Create new lot
+```bash
+curl --request POST \
+    --url localhost:8080/lot \
+    --header 'content-type: application/json' \
+    --data '{"surface":  40, ... }'
+```

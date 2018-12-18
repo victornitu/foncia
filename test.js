@@ -56,7 +56,7 @@ test('API creates a client and a lot', async () => {
     expect(clientResponse.data).toMatchObject(client)
     // Check new client is in the list of clients
     const clientId = clientResponse.data._id
-    const clients = await axios.get(`${baseUrl}/client`)
+    const clients = await axios.get(`${baseUrl}/client?page=1&size=999`)
     const savedClient = clients.data.clients.find(c => c._id === clientId)
     expect(savedClient).toEqual(clientResponse.data)
     // Set lot client to the newly created client
@@ -67,7 +67,7 @@ test('API creates a client and a lot', async () => {
     expect(lotResponse.data).toMatchObject(lot)
     // Check new lot is in the list of lots
     const lotId = lotResponse.data._id
-    const lots = await axios.get(`${baseUrl}/lot`)
+    const lots = await axios.get(`${baseUrl}/lot?page=1&size=999`)
     const savedLot = lots.data.lots.find(l => l._id === lotId)
     expect(savedLot).toEqual(lotResponse.data)
   } catch (e) {

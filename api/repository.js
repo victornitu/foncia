@@ -1,26 +1,43 @@
 const Client = require('./schema/client')
 const Lot = require('./schema/lot')
 
+const listEntity = ({ name, Schema }) => async ({ query }) => {
+  try {
+    const [page, size] = [parseInt(query.page) || 1, parseInt(query.size) || 5]
+    const offset = (page - 1) * size
+    const entities = await Schema.find()
+      .skip(offset)
+      .limit(size)
+      .exec()
+    return {
+      [name]: entities,
+      next: entities.length === size ? `?page=${page + 1}&size=${size}` : null,
+      previous: page > 1 ? `?page=${page - 1}&size=${size}` : null
+    }
+  } catch (e) {
+    throw Error(`Failed to list ${name}: ${e.message}`)
+  }
+}
+
 module.exports = {
   create: () => ({
-    listClients: async () => {
-      return {
-        clients: await Client.find().exec()
-      }
-    },
-    listLots: async () => {
-      return {
-        lots: await Lot.find().exec()
-      }
-    },
+    listClients: listEntity({ name: 'clients', Schema: Client }),
+    listLots: listEntity({ name: 'lots', Schema: Lot }),
     addClient: async ({ body }) => {
-      console.log('body', body)
-      const client = new Client({ ...body })
-      return await client.save()
+      try {
+        const client = new Client(body)
+        return await client.save()
+      } catch (e) {
+        throw Error(`Failed to create client: ${e.message}`)
+      }
     },
     addLot: async ({ body }) => {
-      const lot = new Lot(body)
-      return await lot.save()
+      try {
+        const lot = new Lot(body)
+        return await lot.save()
+      } catch (e) {
+        throw Error(`Failed to create lot: ${e.message}`)
+      }
     }
   })
 }

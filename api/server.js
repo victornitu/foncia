@@ -44,16 +44,23 @@ module.exports = {
           server.use(jwtCheck(config))
         }
         Object.keys(get).forEach(route =>
-          server.get(route, async (req, res) => {
-            const result = (await get[route](req)) || { status: 'Done' }
-            return res.send(result)
+          server.get(route, async (req, res, next) => {
+            try {
+              const result = (await get[route](req)) || { status: 'Done' }
+              return res.send(result)
+            } catch (e) {
+              next(e)
+            }
           })
         )
         Object.keys(post).forEach(route =>
-          server.post(route, async (req, res) => {
-            console.log('req', req)
-            const result = (await post[route](req)) || { status: 'Done' }
-            return res.status(201).send(result)
+          server.post(route, async (req, res, next) => {
+            try {
+              const result = (await post[route](req)) || { status: 'Done' }
+              return res.status(201).send(result)
+            } catch (e) {
+              next(e)
+            }
           })
         )
         server

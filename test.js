@@ -6,7 +6,7 @@ const testEndpoint = (url, code, name) => {
   test(name, async () => {
     expect.assertions(2)
     try {
-      const {status, data} = await axios.get(`${baseUrl}/${url}`)
+      const { status, data } = await axios.get(`${baseUrl}/${url}`)
       expect(status).toEqual(code)
       expect(data).toMatchSnapshot()
     } catch (e) {
@@ -20,8 +20,8 @@ const testError = (url, code, name) => {
     expect.assertions(2)
     try {
       await axios.get(`${baseUrl}/${url}`)
-    } catch ({response}) {
-      const {status, data} = response
+    } catch ({ response }) {
+      const { status, data } = response
       expect(status).toEqual(code)
       expect(data).toMatchSnapshot()
     }
@@ -36,15 +36,15 @@ testError('unknown', 404, 'API returns a not found error')
 test('API creates a client and a lot', async () => {
   expect.assertions(6)
   const client = {
-    fullname:  "Victor Nitu",
-    email: "nitu.v.r@gmail.com",
-    email2: "victor.nitu@vvfluxembourg.com",
-    telDomicile: "+33 123 123",
-    telPro: "+44 234 234",
-    telMobile: "+32 345 345",
-    telMobile2: "+352 456 456",
-    fax: "+49 567 567",
-    sexe: "M"
+    fullname: 'Victor Nitu',
+    email: 'nitu.v.r@gmail.com',
+    email2: 'victor.nitu@vvfluxembourg.com',
+    telDomicile: '+33 123 123',
+    telPro: '+44 234 234',
+    telMobile: '+32 345 345',
+    telMobile2: '+352 456 456',
+    fax: '+49 567 567',
+    sexe: 'M'
   }
   const lot = {
     surface: 35

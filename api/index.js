@@ -3,17 +3,17 @@ const serverBuilder = require('./server')
 const databaseBuilder = require('./database')
 const repositoryBuilder = require('./repository')
 
-const {API, Database} = config
+const { API, Database } = config
 
-const database = databaseBuilder.create({config: Database})
-const repository = repositoryBuilder.create();
-const server = serverBuilder.create({config: API})
+const database = databaseBuilder.create({ config: Database })
+const repository = repositoryBuilder.create()
+const server = serverBuilder.create({ config: API })
 database.connect()
 server.run({
   database,
   routes: {
     get: {
-      '/': async () => ({status: 'running'}),
+      '/': async () => ({ status: 'running' }),
       '/client': repository.listClients,
       '/lot': repository.listLots
     },

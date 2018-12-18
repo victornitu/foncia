@@ -2,7 +2,7 @@
   "name": "foncia_technical_test",
   "version": "1.0.0",
   "description": "Foncia technical test",
-  "main": "test.js",
+  "main": "cli.js",
   "scripts": {
     "start": "docker-compose up -d --build",
     "stop": "docker-compose down",
@@ -10,7 +10,8 @@
     "logs": "docker-compose logs -f api",
     "restore": "node cli restore",
     "reset": "node cli reset",
-    "test": "jest"
+    "test": "jest",
+    "format": "prettier-standard 'cli.js' 'test.js' 'api/**/*.js'"
   },
   "repository": {
     "type": "git",
@@ -27,5 +28,8 @@
     "commander": "^2.19.0",
     "jest": "^23.6.0",
     "shelljs": "^0.8.3"
+  },
+  "devDependencies": {
+    "prettier-standard": "^8.0.1"
   }
 }

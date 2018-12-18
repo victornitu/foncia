@@ -13,12 +13,12 @@ module.exports = {
         lots: await Lot.find().exec()
       }
     },
-    addClient: async ({body}) => {
+    addClient: async ({ body }) => {
       console.log('body', body)
-      const client = new Client({...body})
+      const client = new Client({ ...body })
       return await client.save()
     },
-    addLot: async ({body}) => {
+    addLot: async ({ body }) => {
       const lot = new Lot(body)
       return await lot.save()
     }

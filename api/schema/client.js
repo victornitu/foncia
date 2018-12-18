@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 const clientSchema = new Schema({
-  fullname:  String,
+  fullname: String,
   email: String,
   email2: String,
   telDomicile: String,
@@ -10,7 +10,7 @@ const clientSchema = new Schema({
   telMobile: String,
   telMobile2: String,
   fax: String,
-  sexe: String,
-});
+  sexe: String
+})
 
-module.exports = mongoose.model('Client', clientSchema);
+module.exports = mongoose.model('Client', clientSchema)

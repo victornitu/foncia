@@ -20,7 +20,11 @@ const restoreCommand = `mongorestore -d myFonciaBdd /backup --host ${databaseHos
 cli
   .command('restore')
   .description('Restore database')
-  .action(() => exec(`docker run --rm --network ${network} -v \`pwd\`/myFonciaBdd:/backup mongo bash -c '${restoreCommand}'`))
+  .action(() =>
+    exec(
+      `docker run --rm --network ${network} -v \`pwd\`/myFonciaBdd:/backup mongo bash -c '${restoreCommand}'`
+    )
+  )
 
 cli
   .command('reset')
